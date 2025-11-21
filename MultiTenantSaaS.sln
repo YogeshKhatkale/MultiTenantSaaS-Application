@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantSaaS.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantSaaS.Domain", "MultiTenantSaaS.Domain\MultiTenantSaaS.Domain.csproj", "{F9681752-2EE5-4A49-9316-BE9E7E083F77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantSaas.InfraStructure", "MultiTenantSaas.InfraStructure\MultiTenantSaas.InfraStructure.csproj", "{A0EFFD0C-3B98-4988-A0F1-D73EF6846721}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantSaaS.InfraStructure", "MultiTenantSaas.InfraStructure\MultiTenantSaaS.InfraStructure.csproj", "{A0EFFD0C-3B98-4988-A0F1-D73EF6846721}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantSaaS.Tests", "MultiTenantSaaS.Tests\MultiTenantSaaS.Tests.csproj", "{09B009D2-1D04-4B29-890C-500BA322EA01}"
 EndProject

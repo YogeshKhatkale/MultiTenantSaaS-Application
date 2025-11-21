@@ -1,5 +1,9 @@
-using MultiTenantSaaS.InfraStructure;
+using MultiTenantSaaS.Api.Infrastructure;
 using MultiTenantSaaS.Application;
+using MultiTenantSaaS.InfraStructure;
+using MultiTenantSaaS.InfraStructure.Data;
+using MultiTenantSaaS.InfraStructure.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace MultiTenantSaaS.Api
 {
@@ -21,6 +25,20 @@ namespace MultiTenantSaaS.Api
             builder.Services.AddInfrastructureServices(builder.Configuration);
             // extension from infra
             builder.Services.AddApplicationServices(); // extension from app 
+            // Register tenant provider (scoped per request)
+            builder.Services.AddScoped<ITenantProvider, TenantProvider>();
+
+            // Register ApplicationDbContext with dynamic connection string per-request
+            builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
+            {
+                // We still need a default connection (meta DB) to resolve tenants.
+                // Use a "Master" connection from configuration for tenants table.
+                var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+                var masterConn = configuration.GetConnectionString("Master"); // add in appsettings
+                options.UseSqlServer(masterConn, sql => sql.EnableRetryOnFailure());
+            });
+
+           
 
             var app = builder.Build();
 
@@ -32,7 +50,7 @@ namespace MultiTenantSaaS.Api
             }
 
             app.UseHttpsRedirection();
-
+            app.UseTenantResolution();
             app.UseAuthorization();
 
 

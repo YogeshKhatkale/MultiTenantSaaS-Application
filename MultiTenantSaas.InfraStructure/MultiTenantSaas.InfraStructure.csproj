@@ -10,7 +10,6 @@
     <Folder Include="Data\Seed\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="Identity\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

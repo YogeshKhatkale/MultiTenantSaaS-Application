@@ -12,6 +12,9 @@ namespace MultiTenantSaaS.Domain.Common
         public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; protected set; }
 
+        public Guid TenantId { get;  set; } = Guid.Empty;
+
+
         public void SetUpdated() => UpdatedAt = DateTime.UtcNow;
 
     }
